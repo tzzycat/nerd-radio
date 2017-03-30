@@ -1,0 +1,503 @@
+/**
+ * Global styles
+ */
+@import url('https://fonts.googleapis.com/earlyaccess/notosanstc.css');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+}
+
+*:focus {
+  outline: none;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  background: rgb(240, 245, 245);
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button, input, select {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  -webkit-appearance: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1, h3 {
+  margin: 0;
+}
+
+/**
+ * Sidebar
+ */
+#sidebar {
+  background: rgb(45, 70, 85);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  padding: 1.5rem 0 3rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 235px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#sidebar button {
+  border-left: 4px solid transparent;
+  color: rgba(255, 255, 255, 0.9);
+  display: block;
+  font-size: 0;
+  padding-left: 2rem;
+  text-align: left;
+  transition: all 0.25s;
+  width: 235px;
+  height: 50px;
+}
+
+#sidebar button:hover {
+  background: rgba(0, 0, 0, 0.15);
+  border-left: 4px solid rgb(80, 200, 135);
+  color: #FFF;
+}
+
+#sidebar button.active {
+  background: rgba(0, 0, 0, 0.15);
+  border-left: 4px solid rgb(80, 200, 135);
+  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.3);
+  color: #FFF;
+}
+
+#sidebar button > i,
+#sidebar button > img,
+#sidebar button > span,
+#sidebar #gitHubLink a i,
+#sidebar #gitHubLink a span {
+  vertical-align: middle;
+}
+
+#sidebar button > i {
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+#sidebar button > img {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+  margin-right: 1rem;
+  width: 35px;
+  height: 35px;
+}
+
+#sidebar button > span {
+  font-size: 0.925rem;
+}
+
+#sidebar h3 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  padding: 1.5rem 0 0.5rem 2rem;
+  text-transform: uppercase;
+}
+
+#sidebar #gitHubLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.2rem;
+  transition: all 0.25s;
+  width: 235px;
+}
+
+#sidebar #gitHubLink a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#sidebar #gitHubLink a:hover {
+  color: #FFF;
+}
+
+#sidebar #gitHubLink a i {
+  font-size: 1.1rem;
+  margin-right: 0.55rem;
+}
+
+#sidebar #gitHubLink a span {
+  font-size: 0.8rem;
+}
+
+/**
+ * Main
+ */
+#main {
+  margin-bottom: 60px;
+  position: absolute;
+  left: 265px;
+  top: 40px;
+}
+
+#main h1 {
+  color: rgb(20, 40, 50);
+  font-size: 2rem;
+  margin-bottom: 1.75rem;
+}
+
+#main-content {
+  width: 650px;
+}
+
+@media (min-width: 1240px) {
+  #main-content {
+    width: 975px;
+  }
+}
+
+@media (min-width: 1565px) {
+  #main-content {
+    width: 1300px;
+  }
+}
+
+@media (min-width: 1890px) {
+  #main-content {
+    width: 1625px;
+  }
+}
+
+#youtube-player-wrapper {
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 0.25rem;
+  margin: 0 25px 25px 0;
+  text-align: center;
+}
+
+/**
+ * Display-mode switch
+ */
+#display-mode-switch {
+  font-size: 0;
+  margin: 0 25px 20px 0;
+  text-align: right;
+}
+
+#display-mode-switch > div {
+  display: inline-block;
+}
+
+#display-mode-switch input[type="radio"] {
+  display: none;
+}
+
+#display-mode-switch input[type="radio"] + label {
+  background-image: linear-gradient(to bottom, #FFF, #EEE);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: -1px;
+  padding: 0.25rem 0.9rem;
+}
+
+#display-mode-switch input[type="radio"]:checked + label {
+  background: #EEE;
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+#display-mode-switch > div:nth-child(1) input[type="radio"] + label {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+#display-mode-switch > div:nth-child(3) input[type="radio"] + label {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+/**
+ * Style of entries
+ */
+#entry-container {
+  font-size: 0;
+}
+
+.card {
+  background: #FFF;
+  border-radius: 0.25rem;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.35);
+  display: inline-block;
+  margin: 0 25px 25px 0;
+  transition: all 0.25s;
+  vertical-align: top;
+  width: 300px;
+}
+
+.card:hover {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.125),
+    0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.card > img {
+  border-radius: 0.25rem 0.25rem 0 0;
+  cursor: pointer;
+  width: 300px;
+}
+
+.card-small,
+.card-small > img {
+  width: 170px;
+}
+
+.description {
+  font-size: 1rem;
+  padding: 1.25rem 1.5rem;
+  position: relative;
+}
+
+.entry-title {
+  color: rgb(20, 40, 50);
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.entry-artist {
+  color: rgba(0, 0, 0, 0.75);
+  margin-bottom: 0.25rem;
+}
+
+.entry-info {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.edit-icon {
+  background: rgb(20, 40, 50);
+  border: 0.2rem solid rgb(80, 200, 135);
+  border-radius: 50%;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  box-sizing: content-box;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  right: 1rem;
+  top: -1.32rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.25s;
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
+.edit-icon i {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 2.6rem;
+}
+
+.edit-icon:hover i {
+  color: #FFF;
+}
+
+.card-small .edit-icon {
+  display: none;
+}
+
+#list-container {
+  background: #FFF;
+  border-radius: 0.25rem;
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.1),
+    0 1px 1px rgba(0, 0, 0, 0.2);
+  padding-bottom: 1rem;
+}
+
+#list-container table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#list-container table tr th {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  text-align: left;
+}
+
+#list-container table tr td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+}
+
+#list-container table tbody tr:hover {
+  background: rgba(0, 0, 0, 0.01);
+}
+
+#list-container table tr td:nth-child(4),
+#list-container table tr td:nth-child(5) {
+  padding: 0 1rem;
+  text-align: center;
+}
+
+#list-container table tr td:nth-child(4) a i ,
+#list-container table tr td:nth-child(5) a i {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+#list-container table tr td:nth-child(4) a:hover i ,
+#list-container table tr td:nth-child(5) a:hover i {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/**
+ * Dialog
+ */
+#add-dialog,
+#edit-dialog {
+  background: rgba(0, 0, 0, 0.35);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#add-dialog > div,
+#edit-dialog > div {
+  background: rgb(20, 40, 50);
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  padding: 1.6rem 1.75rem;
+}
+
+#add-dialog h3,
+#edit-dialog h3 {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+#add-dialog-content,
+#edit-dialog-content {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#add-dialog-content table tr td,
+#edit-dialog-content table tr td {
+  padding: 0.45rem 0;
+}
+
+#add-dialog-content table tr td:nth-child(1),
+#edit-dialog-content table tr td:nth-child(1) {
+  padding-right: 1.5rem;
+}
+
+#add-dialog-content table tr td:nth-child(2) input,
+#add-dialog-content table tr td:nth-child(2) select,
+#edit-dialog-content table tr td:nth-child(2) input {
+  font-size: 0.9rem;
+}
+
+#add-dialog-content input[type="text"],
+#edit-dialog-content input[type="text"] {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.1);
+  padding: 0.4rem 0.5rem;
+  transition: all ease-in-out 0.15s;
+  width: 240px;
+}
+
+#add-dialog-content input[type="text"]:focus,
+#edit-dialog-content input[type="text"]:focus {
+  box-shadow:
+    inset 0 0 1px rgba(0, 0 ,0, 0.075),
+    0 0 8px rgba(100, 175, 235, 1);
+}
+
+.select-wrapper {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 0.25rem;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 120px;
+}
+
+.select-wrapper select {
+  color: #333;
+  padding: 0.35rem 0.6rem;
+}
+
+#add-dialog-btn-container,
+#edit-dialog-btn-container {
+  font-size: 0;
+  margin-top: 1rem;
+  text-align: right;
+}
+
+#add-dialog-btn-container button,
+#edit-dialog-btn-container button {
+  border: 2px solid rgba(80, 200, 135, 0.8);
+  border-radius: 2rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.25s;
+}
+
+/* The delete button */
+#edit-dialog-btn-container table tr td:nth-child(1) button {
+  border-color: rgba(220, 60, 80, 0.8);
+}
+
+#add-dialog-btn-container button:hover,
+#edit-dialog-btn-container button:hover {
+  border-color: rgb(80, 200, 135);
+  color: #FFF;
+}
+
+#edit-dialog-btn-container table tr td:nth-child(1) button:hover {
+  border-color: rgb(220, 60, 80);
+}
+
+#add-dialog-btn-container button:nth-child(1),
+#edit-dialog-btn-container table tr td:nth-child(2) button:nth-child(1) {
+  margin-right: 0.5rem;
+}
+
+#edit-dialog-btn-container table {
+  border: 0;
+  width: 100%;
+}
+
+#edit-dialog-btn-container table tr td:nth-child(1) {
+  text-align: left;
+}
+
+#edit-dialog-btn-container table tr td:nth-child(2) {
+  text-align: right;
+}
