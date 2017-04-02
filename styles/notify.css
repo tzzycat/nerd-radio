@@ -1,0 +1,19 @@
+#notify-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 10;  /* prevent covered by YouTube player */
+}
+
+.notify-entry {
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px rgba(100, 175, 235, 0.9);
+  clear: both;
+  color: #FFF;
+  float: right;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 0.6rem;
+  padding: 0.75rem;
+}

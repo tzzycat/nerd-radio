@@ -68,9 +68,8 @@ function NavigationButton(props) {
         document.getElementById('add-dialog').style.display = 'flex';
         break;
       case 'shuffle':
-        var i = Math.floor(Math.random() * data.entries.length),
-            vid = data.entries[i].vid;
-        setYouTubePlayerSrc(vid, true);
+        var i = Math.floor(Math.random() * data.entries.length);
+        setYouTubePlayerSrc(data.entries[i], true);
         break;
     }
   }
@@ -247,7 +246,7 @@ function CardContainer(props) {
 
 function Card(props) {
   function playYouTube(e) {
-    setYouTubePlayerSrc(props.data.vid, true);
+    setYouTubePlayerSrc(props.data, true);
   }
 
   if (props.data.userId !== -1) {
@@ -363,7 +362,7 @@ function ListItem(props) {
 
   function playYouTube(e) {
     e.preventDefault();
-    setYouTubePlayerSrc(props.data.vid, true);
+    setYouTubePlayerSrc(props.data, true);
   }
 
   if (props.data.userId !== -1) {
@@ -594,7 +593,7 @@ function EditDialogButtonContainer(props) {
         loadData('entries', 'all', function () {
           render();
           var latestEntry = data.entries.slice(0).reverse()[0];
-          setYouTubePlayerSrc(latestEntry.vid, false);
+          setYouTubePlayerSrc(latestEntry, false);
         });
       });
       document.getElementById('edit-dialog').style.display = 'none';
@@ -623,7 +622,7 @@ function EditDialogButtonContainer(props) {
       loadData('entries', 'all', function () {
         render();
         var latestEntry = data.entries.slice(0).reverse()[0];
-        setYouTubePlayerSrc(latestEntry.vid, false);
+        setYouTubePlayerSrc(latestEntry, false);
       });
     });
     document.getElementById('edit-dialog').style.display = 'none';
@@ -720,10 +719,19 @@ function loadData(type, filter, callback) {
 /**
  * Other functions
  */
-function setYouTubePlayerSrc(vid, autoPlay) {
-  var src = 'https://www.youtube.com/embed/' + vid;
-  if (autoPlay) src += '?autoplay=1';
-  document.getElementById('youtube-player-frame').src = src;
+function setYouTubePlayerSrc(entryData, autoPlay) {
+  var vid = entryData.vid,
+      src = 'https://www.youtube.com/embed/' + vid,
+      targetElement = document.getElementById('youtube-player-frame');
+  if (autoPlay) {
+    src += '?autoplay=1';
+    if (targetElement.src === src) return;
+    var title = entryData.title,
+        artist = entryData.artist,
+        user = data.users[entryData.userId].name;
+    notify('Now Playing:<br>' + artist + ' - ' + title + '<br>Shared by ' + user);
+  }
+  targetElement.src = src;
 }
 
 function resetActiveButtons() {
@@ -766,7 +774,7 @@ function isInputsValid(inputList) {
     if (loadedDataCount === 2) {
       render(function () {
         var latestEntry = data.entries.slice(0).reverse()[0];
-        setYouTubePlayerSrc(latestEntry.vid, false);
+        setYouTubePlayerSrc(latestEntry, false);
         newSongTitle = document.getElementById('new-song-title');
         newSongArtist = document.getElementById('new-song-artist');
         newSongVid = document.getElementById('new-song-vid');
