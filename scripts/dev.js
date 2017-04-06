@@ -121,7 +121,7 @@ function GitHubLink(props) {
 
 /* [Component] Main */
 function Main(props) {
-  const heading = (entryFilter && entryFilter !== 'all')?
+  const heading = (entryFilter !== undefined && entryFilter !== 'all')?
     ('Nerd Radio: ' + data.users[entryFilter].name) : 'Nerd Radio';
   return (
     <div id="main">
